@@ -53,6 +53,9 @@
     <h2 id="promptText">I'm sorry. Please forgive me.</h2>
     <button class="yes" onclick="handleYes()">Yes</button>
     <button class="no" onclick="handleNo()">No</button>
+    <div id="responseGif" style="display: none;">
+        <img src="dd/jumping-gatito.gif" alt="Jumping Cat GIF">
+    </div>
 </div>
 
 <script>
@@ -61,6 +64,7 @@
     function handleYes() {
         alert("Yesswaesdraee!");
         // Add any further actions if needed when user selects Yes
+        showResponseGif();
     }
 
     function handleNo() {
@@ -105,8 +109,12 @@
             }
         });
     }
+
+    function showResponseGif() {
+        const gifContainer = document.getElementById('responseGif');
+        gifContainer.style.display = 'block';
+    }
 </script>
 
 </body>
 </html>
-
