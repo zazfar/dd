@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apology Prompt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #3498db; /* Blue background color */
+            color: #fff; /* White text color */
+            text-align: center;
+            padding-top: 100px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #000; /* Black text color */
+        }
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button.yes {
+            background-color: #27ae60; /* Green background color */
+            color: #fff; /* White text color */
+        }
+        button.no {
+            background-color: #e74c3c; /* Red background color */
+            color: #fff; /* White text color */
+        }
+        .away {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 id="promptText">I'm sorry. Please forgive me.</h2>
+    <button class="yes" onclick="handleYes()">Yes</button>
+    <button class="no" onclick="handleNo()">No</button>
+</div>
+
+<script>
+    let movingButton = false;
+
+    function handleYes() {
+        alert("Yesswaesdraee!");
+        // Add any further actions if needed when user selects Yes
+    }
+
+    function handleNo() {
+        const promptText = document.getElementById('promptText');
+        const yesButton = document.querySelector('.yes');
+        const noButton = document.querySelector('.no');
+        
+        if (promptText.innerText === "I'm sorry. Please forgive me.") {
+            promptText.innerText = "C'mon";
+            yesButton.innerText = "Alright fine";
+            noButton.innerText = "No Dumbass";
+        } else if (promptText.innerText === "C'mon") {
+            if (noButton.innerText === "No Dumbass") {
+                promptText.innerText = "Ok. Let's play hardball";
+                yesButton.innerText = "Fine. I give up";
+                noButton.innerText = "You're on bitch!!";
+            }
+        } else if (promptText.innerText === "Ok. Let's play hardball") {
+            if (noButton.innerText === "You're on bitch!!") {
+                alert("Lets goo");
+            } else {
+                alert("Yesswaesdraee!");
+            }
+
+            moveButtonAwayFromCursor(noButton);
+            movingButton = true;
+        }
+    }
+
+    function moveButtonAwayFromCursor(button) {
+        document.addEventListener('mousemove', function(event) {
+            if (movingButton) {
+                const mouseX = event.clientX;
+                const mouseY = event.clientY;
+
+                const newLeft = mouseX + Math.random() * 100;
+                const newTop = mouseY + Math.random() * 100;
+
+                button.style.position = 'fixed';
+                button.style.left = newLeft + 'px';
+                button.style.top = newTop + 'px';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
+
